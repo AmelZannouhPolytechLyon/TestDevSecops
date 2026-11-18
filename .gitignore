@@ -1,0 +1,66 @@
+## Build outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+[Oo]ut/
+[Pp]ublish/
+x64/
+x86/
+*.dll
+*.exe
+*.pdb
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Visual Studio / IDE
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.iml
+*.userprefs
+*.ncrunchsolution
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+.localhistory/
+
+## Test results and coverage
+TestResults/
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+*.coveragexml
+coverage*/
+*.cobertura.xml
+
+## User secrets and local settings
+appsettings.*.local.json
+*.env
+.env.*
+secrets.json
+*.pfx
+*.p12
+
+## Docker / deployment
+*.tgz
+.azure/
+*.publishsettings
+
+## OS files
+.DS_Store
+Thumbs.db
+desktop.ini
