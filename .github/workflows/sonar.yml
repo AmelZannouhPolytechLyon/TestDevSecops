@@ -1,0 +1,44 @@
+name: SonarQube Cloud - SAST
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonar:
+    name: SonarQube Cloud Analysis
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Start SonarQube analysis
+        run: >
+          dotnet sonarscanner begin
+          /k:"AmelZannouhPolytechLyon_TestDevSecops"
+          /o:"AmelZannouhPolytechLyon"
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: End SonarQube analysis
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
