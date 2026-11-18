@@ -12,6 +12,8 @@ var connectionString = "Server=SERVEUR;Database=DemoDb;User Id=admin;Password=Pa
 var apiKey = "demo-api-key-123456789";
 
 
+
+
 // SAST-03 : algorithme cryptographique volontairement faible
 using var md5 = MD5.Create();
 var hash = md5.ComputeHash(
