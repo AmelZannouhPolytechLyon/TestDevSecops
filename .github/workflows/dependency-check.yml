@@ -17,6 +17,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Installe .NET 10
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
+      # Restaure les dépendances NuGet
+      - name: Restore NuGet dependencies
+        run: dotnet restore
+
+      # Affiche notre baseline NuGet
+      - name: NuGet vulnerability baseline
+        run: dotnet list package --vulnerable --include-transitive
+
+      # Lance OWASP Dependency-Check
       - name: OWASP Dependency-Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
@@ -27,6 +42,7 @@ jobs:
           args: >
             --failOnCVSS 7
 
+      # Publie toujours les rapports, même si CVSS >= 7
       - name: Publier le rapport
         if: always()
         uses: actions/upload-artifact@v4
