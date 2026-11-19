@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".github\workflows\sonar.yml" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>
